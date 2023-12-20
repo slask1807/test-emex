@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmexTest extends BasePage {
+public class EmexTest  extends BasePage {
     @Test
     public void checkSpearPartInBasket() throws InterruptedException {
         EmexPage emexPage = new EmexPage(driver);
