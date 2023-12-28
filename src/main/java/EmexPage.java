@@ -17,6 +17,7 @@ public class EmexPage {
     private String buttonEnter = "//div[@class= 'sc-dac0c06d-1 flqRoP']";
     private String inputLogin = "//input[@placeholder= 'Телефон, почта или id']";
     private String inputPassword = "//input[@id='signInPasswordInput']";
+    private String messengWithEmtyLogin = "//*[contains(text(), 'Введите логин')]";
 
     private WebDriver driver;
 
@@ -87,5 +88,9 @@ public class EmexPage {
         expectedKatalogItems.add("Инструменты для СТО");
         expectedKatalogItems.add("Для грузового транспорта");
         return expectedKatalogItems;
+    }
+
+    public String getMessengWithEmtyLogin() {
+        return driver.findElement(By.xpath(messengWithEmtyLogin)).getText();
     }
 }

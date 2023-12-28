@@ -29,4 +29,13 @@ public class EmexTest extends BasePage {
         emexPage.clickButtonEnter();
         Assertions.assertEquals("rgb(255, 0, 0)", emexPage.getPasswordsBordColor());
     }
+
+    @Test
+    public void checkEnterWithEmptyLogin() throws InterruptedException {
+        EmexPage emexPage = new EmexPage(driver);
+        driver.navigate().to("https://emex.ru/");
+        emexPage.clickbuttonSubmitAccount();
+        emexPage.clickButtonEnter();
+        Assertions.assertEquals("Введите логин", emexPage.getMessengWithEmtyLogin());
+    }
 }

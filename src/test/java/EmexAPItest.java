@@ -9,8 +9,24 @@ public class EmexAPItest {
         given()
                 .body(requestBody)
                 .header("Content-Type", "application/json")
+                .when()
                 .post("https://emex.ru/api/account/login")
-                .then().log().all();
+                .then()
+                .log().all()
+        .statusCode(500);
+    }
+
+    @Test
+    public void testWithOutILogin() {
+        String requestBody = "{\"login\":,\"password\":\"43434\",\"t\":1703008689457}";
+        given()
+                .body(requestBody)
+                .header("Content-Type", "application/json")
+                .when()
+                .post("https://emex.ru/api/account/login")
+                .then()
+                .log().all()
+                .statusCode(400);
     }
 }
 
