@@ -1,6 +1,9 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import webdriver.SingleWebdriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +20,15 @@ public class EmexPage {
     private String buttonEnter = "//div[@class= 'sc-dac0c06d-1 flqRoP']";
     private String inputLogin = "//input[@placeholder= 'Телефон, почта или id']";
     private String inputPassword = "//input[@id='signInPasswordInput']";
-    private String messengWithEmtyLogin = "//*[contains(text(), 'Введите логин')]";
+   // private String messengWithEmtyLogin = "//*[contains(text(), 'Введите логин')]";
+    private String messengWithEmtyLogin = "//*[@class=\"e-message e-message--isError\"]";
+    private String inputPasswords = "//*[@id=\"signInPasswordInput\"]";
+
 
     private WebDriver driver;
 
-    public EmexPage(WebDriver driver) {
-        this.driver = driver;
+    public EmexPage() {
+        this.driver = SingleWebdriver.getDriver();
     }
 
     public void seachText() throws InterruptedException {
@@ -58,8 +64,12 @@ public class EmexPage {
         Thread.sleep(3000);
     }
 
-    public void setInputLogin() {
-        driver.findElement(By.xpath(inputLogin)).sendKeys("+79878342494");
+    public void setInputLogin(String login) {
+        driver.findElement(By.xpath(inputLogin)).sendKeys(login);
+    }
+
+    public void setInputPassword(String inputPassword) {
+        driver.findElement(By.xpath(inputPasswords)).sendKeys(inputPassword);
     }
 
     public void clickButtonEnter() {

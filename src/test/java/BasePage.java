@@ -1,21 +1,20 @@
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import webdriver.SingleWebdriver;
 
 public class BasePage {
     WebDriver driver;
 
-    @BeforeEach
-    public void baseStart() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+//    @BeforeEach
+//   public void baseStart() {
+////        driver = new ChromeDriver();
+//        MyDriver.getDriver().manage().window().maximize();
+// }
 
-    @AfterEach
-    public void baseFinish() {
-        // driver.quit();
-    }
+//    @AfterEach
+//    public void baseFinish() {
+//       SingleWebdriver.getDriver().quit();
+//    }
 
 }
 
