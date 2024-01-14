@@ -17,6 +17,10 @@ public class EmexPage {
         this.driver = SingleWebdriver.getDriver();
     }
 
+    public static String getUrl() {
+        return EmexPageLocators.Url;
+    }
+
     public EmexPage seachText(String numberSpearPart) throws InterruptedException {
         driver.findElement(By.xpath(EmexPageLocators.InputText)).sendKeys(numberSpearPart);
         driver.findElement(By.xpath(EmexPageLocators.ButtonFind)).click();
