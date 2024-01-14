@@ -1,13 +1,16 @@
-import domain.User;
+package by.itacademy.shlesin.ua;
+
+import by.itacademy.shlesin.domain.User;
+import by.itacademy.shlesin.pages.EmexPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pages.EmexPage;
+
 
 public class EmexTest extends BasePage {
     @Test
     public void checkSpearPartInBasket() throws InterruptedException {
         EmexPage emexPage = new EmexPage();
-        emexPage.seachText();
+        emexPage.seachText("1051859");
         emexPage.chooseFirstShop();
         emexPage.addInBasket();
         emexPage.enterBasket();
@@ -38,7 +41,7 @@ public class EmexTest extends BasePage {
     }
 
     @Test
-    public void checkEnterCorrectEmil() throws InterruptedException {
+    public void checkEnterCorrectEmail() throws InterruptedException {
         EmexPage emexPage = new EmexPage();
         emexPage.clickbuttonSubmitAccount();
         emexPage.setInputLogin(User.getRundomCorrectEmail());
@@ -46,13 +49,21 @@ public class EmexTest extends BasePage {
         emexPage.clickButtonEnter();
 
     }
+
     @Test
-    public void checkEnterNonCorrectEmil() throws InterruptedException {
+    public void checkEnterNonCorrectEmail() throws InterruptedException {
         EmexPage emexPage = new EmexPage();
         emexPage.clickbuttonSubmitAccount();
         emexPage.setInputLogin(User.getRundomNonCorrectEmail());
         emexPage.setInputPassword(User.getRundomPassword());
         emexPage.clickButtonEnter();
         Assertions.assertEquals("Номер телефона, емейл или id введены неверно", emexPage.getMessengWithEmtyLogin());
+    }
+
+    @Test
+    public void wordPartnership() throws InterruptedException {
+        EmexPage emexPage = new EmexPage();
+               emexPage.clickButtonContacts();
+                Assertions.assertEquals("СОТРУДНИЧЕСТВО",emexPage.getPartnership());
     }
 }
