@@ -18,54 +18,54 @@ public class EmexPage {
     }
 
     public EmexPage seachText(String numberSpearPart) throws InterruptedException {
-        driver.findElement(By.xpath(EmexPageXpath.InputText)).sendKeys(numberSpearPart);
-        driver.findElement(By.xpath(EmexPageXpath.ButtonFind)).click();
+        driver.findElement(By.xpath(EmexPageLocators.InputText)).sendKeys(numberSpearPart);
+        driver.findElement(By.xpath(EmexPageLocators.ButtonFind)).click();
         Thread.sleep(6000);
         return this;
     }
 
     public void chooseFirstShop() throws InterruptedException {
-        driver.findElement(By.xpath(EmexPageXpath.FirstShop)).click();
+        driver.findElement(By.xpath(EmexPageLocators.FirstShop)).click();
         Thread.sleep(3000);
     }
 
     public void addInBasket() {
-        driver.findElement(By.xpath(EmexPageXpath.ButtonAddBasket)).click();
+        driver.findElement(By.xpath(EmexPageLocators.ButtonAddBasket)).click();
     }
 
     public void enterBasket() throws InterruptedException {
-        driver.findElement(By.xpath(EmexPageXpath.ButtonBasket)).click();
+        driver.findElement(By.xpath(EmexPageLocators.ButtonBasket)).click();
         Thread.sleep(3000);
     }
 
     public String getTextBasketSparePart() {
         //String textSper driver.findElement(By.xpath(textBasketSparePart)).getText());
-        return driver.findElement(By.xpath(EmexPageXpath.TextBasketSparePart)).getText();
+        return driver.findElement(By.xpath(EmexPageLocators.TextBasketSparePart)).getText();
          }
 
     public List<WebElement> setItemCatalog() {
-        return driver.findElements(By.xpath(EmexPageXpath.ItemsCatalog));
+        return driver.findElements(By.xpath(EmexPageLocators.ItemsCatalog));
     }
 
     public void clickbuttonSubmitAccount() throws InterruptedException {
-        driver.findElement(By.xpath(EmexPageXpath.ButtonSubmitAccount)).click();
+        driver.findElement(By.xpath(EmexPageLocators.ButtonSubmitAccount)).click();
         Thread.sleep(3000);
     }
 
     public void setInputLogin(String login) {
-        driver.findElement(By.xpath(EmexPageXpath.InputLogin)).sendKeys(login);
+        driver.findElement(By.xpath(EmexPageLocators.InputLogin)).sendKeys(login);
     }
 
     public void setInputPassword(String inputPassword) {
-        driver.findElement(By.xpath(EmexPageXpath.InputPasswords)).sendKeys(inputPassword);
+        driver.findElement(By.xpath(EmexPageLocators.InputPasswords)).sendKeys(inputPassword);
     }
 
     public void clickButtonEnter() {
-        driver.findElement(By.xpath(EmexPageXpath.ButtonEnter)).click();
+        driver.findElement(By.xpath(EmexPageLocators.ButtonEnter)).click();
     }
 
     public String getPasswordsBordColor() {
-        return driver.findElement(By.xpath(EmexPageXpath.InputPassword)).getCssValue("border-color");
+        return driver.findElement(By.xpath(EmexPageLocators.InputPassword)).getCssValue("border-color");
     }
 
     public List<String> addElementsKatalogItems() {
@@ -89,17 +89,17 @@ public class EmexPage {
     }
 
     public String getMessengWithEmtyLogin() {
-        return driver.findElement(By.xpath(EmexPageXpath.MessengWithEmtyLogin)).getText();
+        return driver.findElement(By.xpath(EmexPageLocators.MessengWithEmtyLogin)).getText();
     }
 
     public EmexPage clickButtonContacts() throws InterruptedException {
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
         Thread.sleep(2000);
-        driver.findElement(By.xpath(EmexPageXpath.ButtonContakts)).click();
+        driver.findElement(By.xpath(EmexPageLocators.ButtonContakts)).click();
         return this;
     }
 
     public String getPartnership() {
-        return driver.findElement(By.xpath(EmexPageXpath.Partnership)).getText();
+        return driver.findElement(By.xpath(EmexPageLocators.Partnership)).getText();
     }
 }
