@@ -1,15 +1,22 @@
 package by.itacademy.shlesin.pages;
 
 import by.itacademy.shlesin.webdriver.SingleWebdriver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmexPage {
+
+    private static final Logger logger = LogManager.getLogger();
 
     private WebDriver driver;
 
@@ -18,32 +25,53 @@ public class EmexPage {
     }
 
     public static String getUrl() {
+        logger.info("Homepage opened" + EmexPageLocators.URL);
         return EmexPageLocators.URL;
     }
 
-    public EmexPage seachText(String numberSpearPart) throws InterruptedException {
+    public WebElement waitForWebElementVisibilityInSeconds(WebElement element, int secondsToWait) {
+        return new WebDriverWait(driver, Duration.ofSeconds(secondsToWait))
+                .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public WebElement waitForElementToBeClickable(WebElement element, int secondsToWait) {
+        return new WebDriverWait(driver, Duration.ofSeconds(secondsToWait))
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void click(WebElement webElement) {
+        waitForWebElementVisibilityInSeconds(webElement, 3);
+        webElement.click();
+    }
+
+    public EmexPage seachText(String numberSpearPart) {
         driver.findElement(By.xpath(EmexPageLocators.INPUT_TEXT)).sendKeys(numberSpearPart);
-        driver.findElement(By.xpath(EmexPageLocators.BUTTON_FIND)).click();
-        Thread.sleep(6000);
+        WebElement buttonFind = driver.findElement(By.xpath(EmexPageLocators.BUTTON_FIND));
+        click(buttonFind);
         return this;
     }
 
     public void chooseFirstShop() throws InterruptedException {
-        driver.findElement(By.xpath(EmexPageLocators.FIRST_SHOP)).click();
-        Thread.sleep(3000);
+        Thread.sleep(6000);
+        WebElement firstShop = driver.findElement(By.xpath(EmexPageLocators.FIRST_SHOP));
+        waitForElementToBeClickable(firstShop, 5);
+        click(firstShop);
     }
 
-    public void addInBasket() {
+    public void addInBasket() throws InterruptedException {
+        Thread.sleep(3000);
         driver.findElement(By.xpath(EmexPageLocators.BUTTON_ADD_BUSKET)).click();
     }
 
-    public void enterBasket() throws InterruptedException {
+    public void enterBasket() {
         driver.findElement(By.xpath(EmexPageLocators.BUTTON_BASKET)).click();
-        Thread.sleep(3000);
-    }
+           }
 
-    public String getTextBasketSparePart() {
-        return driver.findElement(By.xpath(EmexPageLocators.TEXT_BASKET_SPEAPARTS)).getText();
+    public String getTextBasketSparePart() throws InterruptedException {
+        Thread.sleep(3000);
+        String basket = driver.findElement(By.xpath(EmexPageLocators.TEXT_BASKET_SPEAPARTS)).getText();
+        logger.info("getTextBasketSparePart:" + basket);
+        return basket;
     }
 
     public List<WebElement> setItemCatalog() {

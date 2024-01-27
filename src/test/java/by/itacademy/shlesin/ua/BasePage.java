@@ -7,16 +7,17 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class BasePage {
 
-EmexPage emexPage;
-@BeforeEach
-public void testStart() {
-    emexPage = new EmexPage();
-   }
+    EmexPage emexPage;
+
+    @BeforeEach
+    public void testStart() {
+        emexPage = new EmexPage();
+    }
 
 
     @AfterEach
     public void baseFinish() {
-       SingleWebdriver.quitDriver();
+        SingleWebdriver.quitDriver();
     }
 
 }
