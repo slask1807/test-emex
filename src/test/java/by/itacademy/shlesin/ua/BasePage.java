@@ -6,13 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 public class BasePage {
-//   WebDriver driver;
-//
-////    @BeforeEach
-////   public void baseStart() {
-//////        driver = new ChromeDriver();
-////        MyDriver.getDriver().manage().window().maximize();
-//// }
+
 EmexPage emexPage;
 @BeforeEach
 public void testStart() {
