@@ -2,12 +2,14 @@ package by.itacademy.shlesin.ua;
 
 import by.itacademy.shlesin.domain.User;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
 public class EmexTest extends BasePage {
 
     @Test
+    @DisplayName("Поиск по номеру запчасти, добавление в корзину, проверка содержимого корзины ")
     public void checkSpearPartInBasket() throws InterruptedException {
         emexPage.seachText("1051859");
         emexPage.chooseFirstShop();
@@ -17,11 +19,13 @@ public class EmexTest extends BasePage {
     }
 
     @Test
+    @DisplayName("Провека каталога товаров")
     public void testMenu() {
         Assertions.assertEquals(emexPage.addExpectedKatalogItems(), emexPage.addElementsKatalogItems());
     }
 
     @Test
+    @DisplayName("Проверка входа в личный кабинет без пароля")
     public void checkEnterWithEmptyPassword() throws InterruptedException {
         emexPage.clickbuttonSubmitAccount();
         emexPage.setInputLogin(User.getRundomCorrectEmail());
@@ -30,6 +34,7 @@ public class EmexTest extends BasePage {
     }
 
     @Test
+    @DisplayName("Проверка входа вличный кабинет без логина")
     public void checkEnterWithEmptyLogin() throws InterruptedException {
         emexPage.clickbuttonSubmitAccount();
         emexPage.clickButtonEnter();
@@ -37,15 +42,17 @@ public class EmexTest extends BasePage {
     }
 
     @Test
+    @DisplayName("Проверка входа в личный кабинет с валидным логиным и паролем")
     public void checkEnterCorrectEmail() throws InterruptedException {
         emexPage.clickbuttonSubmitAccount();
         emexPage.setInputLogin(User.getRundomCorrectEmail());
         emexPage.setInputPassword(User.getRundomPassword());
         emexPage.clickButtonEnter();
-
+        Assertions.assertEquals("Неверный логин или пароль", emexPage.getMessengWithCorrectLoginAndEmail());
     }
 
     @Test
+    @DisplayName("Проверка входа вличный кабинет с невалидным логином и паролем")
     public void checkEnterNonCorrectEmail() throws InterruptedException {
         emexPage.clickbuttonSubmitAccount();
         emexPage.setInputLogin(User.getRundomNonCorrectEmail());
@@ -55,8 +62,9 @@ public class EmexTest extends BasePage {
     }
 
     @Test
+    @DisplayName("Проверка отображения выражения на главной странице")
     public void wordPartnership() throws InterruptedException {
-               emexPage.clickButtonContacts();
-                Assertions.assertEquals("СОТРУДНИЧЕСТВО",emexPage.getPartnership());
+        emexPage.clickButtonContacts();
+        Assertions.assertEquals("СОТРУДНИЧЕСТВО", emexPage.getPartnership());
     }
 }

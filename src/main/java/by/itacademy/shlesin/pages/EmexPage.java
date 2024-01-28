@@ -34,6 +34,10 @@ public class EmexPage {
                 .until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void waiter(int milliSecondsToWait) throws InterruptedException {
+        Thread.sleep(milliSecondsToWait);
+    }
+
     public WebElement waitForElementToBeClickable(WebElement element, int secondsToWait) {
         return new WebDriverWait(driver, Duration.ofSeconds(secondsToWait))
                 .until(ExpectedConditions.elementToBeClickable(element));
@@ -52,23 +56,23 @@ public class EmexPage {
     }
 
     public void chooseFirstShop() throws InterruptedException {
-        Thread.sleep(6000);
+        waiter(6000);
         WebElement firstShop = driver.findElement(By.xpath(EmexPageLocators.FIRST_SHOP));
         waitForElementToBeClickable(firstShop, 5);
         click(firstShop);
     }
 
     public void addInBasket() throws InterruptedException {
-        Thread.sleep(3000);
+        waiter(3000);
         driver.findElement(By.xpath(EmexPageLocators.BUTTON_ADD_BUSKET)).click();
     }
 
     public void enterBasket() {
         driver.findElement(By.xpath(EmexPageLocators.BUTTON_BASKET)).click();
-           }
+    }
 
     public String getTextBasketSparePart() throws InterruptedException {
-        Thread.sleep(3000);
+        waiter(3000);
         String basket = driver.findElement(By.xpath(EmexPageLocators.TEXT_BASKET_SPEAPARTS)).getText();
         logger.info("getTextBasketSparePart:" + basket);
         return basket;
@@ -80,7 +84,7 @@ public class EmexPage {
 
     public void clickbuttonSubmitAccount() throws InterruptedException {
         driver.findElement(By.xpath(EmexPageLocators.BUTTON_SUBMIT_ACCOUNT)).click();
-        Thread.sleep(3000);
+        waiter(3000);
     }
 
     public void setInputLogin(String login) {
@@ -124,9 +128,14 @@ public class EmexPage {
         return driver.findElement(By.xpath(EmexPageLocators.MESSENG_WITH_EMTYLOGIN)).getText();
     }
 
+    public String getMessengWithCorrectLoginAndEmail() throws InterruptedException {
+        waiter(4000);
+        return driver.findElement(By.xpath(EmexPageLocators.MESSENG_WITH_CORRECT_LOGIN_AND_EMAIL)).getText();
+    }
+
     public EmexPage clickButtonContacts() throws InterruptedException {
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL, Keys.END);
-        Thread.sleep(2000);
+        waiter(2000);
         driver.findElement(By.xpath(EmexPageLocators.BUTTON_CONTATS)).click();
         return this;
     }
