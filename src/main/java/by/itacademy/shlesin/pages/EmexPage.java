@@ -96,7 +96,8 @@ public class EmexPage {
     }
 
     public String getPasswordsBordColor() {
-        return driver.findElement(By.xpath(EmexPageLocators.INPUT_PASSWORD)).getCssValue("border-color");
+        return driver.findElement(By.xpath(EmexPageLocators.INPUT_PASSWORD))
+                .getCssValue("border-color");
     }
 
     public List<String> addElementsKatalogItems() {
