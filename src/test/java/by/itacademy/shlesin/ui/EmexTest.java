@@ -1,4 +1,4 @@
-package by.itacademy.shlesin.ua;
+package by.itacademy.shlesin.ui;
 
 import by.itacademy.shlesin.domain.User;
 import org.junit.jupiter.api.Assertions;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-public class EmexTest extends BasePage {
+public class EmexTest extends BaseTest {
 
     @Test
     @DisplayName("Поиск по номеру запчасти, добавление в корзину, проверка содержимого корзины ")
@@ -68,3 +68,4 @@ public class EmexTest extends BasePage {
         Assertions.assertEquals("СОТРУДНИЧЕСТВО", emexPage.getPartnership());
     }
 }
+мсч
